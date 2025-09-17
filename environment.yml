@@ -1,14 +1,17 @@
 name: iupac2struct
 channels:
-  - lich
-  - rdkit
-  - pytorch
   - conda-forge
   - defaults
 dependencies:
-  - rdkit=2020.03.3.0=py36hc20afe1_1
-  - tqdm
-  - yaml
-  - pytorch  
+  - python=3.12
   - pandas
-  - cudatoolkit=10.2        
+  - numpy
+  - tqdm
+  - jupyter
+  - rdkit
+  - pip
+  - pip:
+      - torch==2.8.0+cu128
+      - torchvision==0.23.0+cu128
+      - torchaudio==2.8.0+cu128
+      - --extra-index-url https://download.pytorch.org/whl/cu128
