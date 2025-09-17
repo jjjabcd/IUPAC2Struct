@@ -25,7 +25,7 @@ if torch.cuda.is_available():
 else:
     device = torch.device('cpu')
 
-M = torch.load(pt.join("models","iupac2smiles_model.pt"), map_location=device)
+M = torch.load(pt.join("models","iupac2smiles_model.pt"), map_location=device, weights_only=False)
 M.device = device
 
 def count_acc(df, beam=1):
