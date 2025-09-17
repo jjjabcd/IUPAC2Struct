@@ -1,4 +1,4 @@
-### IUPAC2Struct model 
+# IUPAC2Struct model 
 
 This is Transformer-based IUPAC2Struct model. It converts IUPAC names to SMILES strings. The model's quality is almost on the same level as rules-based OPSIN; however, our solution is purely neural one.  
 
@@ -8,31 +8,41 @@ This is Transformer-based IUPAC2Struct model. It converts IUPAC names to SMILES 
 | IUPAC2Struct  | 99.1%        | 
 
 ## Usage
-Create the environment first:
 
-`conda create -f environment.yml`
+### 1. Create the environment first:
 
-To run it:
-\
-`python run.py`
-
-Command line arguments:
-
-``python run.py --help``
-```python run.py --help
-usage: run.py [-h] [-f FILE] [-r RANDOM] [-b BEAM_SIZE]
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -f FILE, --file FILE  take a dataset
-  -r RANDOM, --random RANDOM
-                        take N random molecules from a dataset
-  -b BEAM_SIZE, --beam-size BEAM_SIZE
-                        Beam size for Transformer
+```bash
+conda env create -f environment.yml
+conda activate iupac2struct
 ```
-Default settings are:
 
-``-f data/test_100000.csv -b 5 -n 1000 ``
+### 2. [Optional] Install Git LFS
+If you want to use the pretrained model, you need to install [Git LFS](https://git-lfs.com/)
+:
+```bash
+# Option A: via conda
+conda install -c conda-forge git-lfs
+
+# Option B: via apt (Ubuntu/Debian)
+sudo apt-get update
+sudo apt-get install git-lfs
+```
+
+### 3. Download model files:
+
+```bash 
+git lfs pull
+```
+
+### 4. Run the script:
+
+```bash
+python run.py -f {file_path} -r {number of data} -b {beam size}
+```
+- `-f`: path to the dataset file(CSV with input(iupac), target(SMILES))
+- `-r`: number of random samples to evaluate (default: 1000)
+- `-b`: beam size for the Transformer decoder (default: 5)
+
 
 ## Citation
 Please, cite: 
